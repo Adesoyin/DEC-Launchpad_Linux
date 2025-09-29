@@ -59,16 +59,15 @@ See below the preprocess.sh script:
             echo "dataset cleaning failed"
     fi
 
+    #Filtering failed status from the data
+    awk -F, '$6 != "Failed" {print $1, $2,$3.$4,$5,$6}' OFS ="," "$removefile" > "$outputfile"
 
-#Filtering failed status from the data
-awk -F, '$6 != "Failed" {print $1, $2,$3.$4,$5,$6}' OFS ="," "$removefile" > "$outputfile"
-
-#Checking if the command is successful
-if [ $? -eq 0 ]; then
-        echo "Successfully removed failed status" & cat "$outputfile"
-else
-        echo "dataset cleaning failed"
-fi
+    #Checking if the command is successful
+    if [ $? -eq 0 ]; then
+            echo "Successfully removed failed status" & cat "$outputfile"
+    else
+            echo "dataset cleaning failed"
+    fi
 
 **Ensuring the script is executable**
 
