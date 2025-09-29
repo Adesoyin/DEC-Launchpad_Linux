@@ -1,0 +1,31 @@
+  ls -la
+  160  mkdir data_pipeline
+  161  cd data_pipeline
+  162  ls -la
+  163  la
+  164  ls
+  165  cd ..
+  166  clear
+  167  pwd
+  168  cd data_pipeline
+  169  ls -l
+  170  mkdir input output logs
+  171  ls -l
+  172  cd input
+  173  cd data_pipeline
+  174  cd/data_pipeline/input
+  175  ls -l
+  176  cd /data_pipeline/input
+  177  ~/data_pipeline/input/
+  178  pwd
+  179  /home/adeboladesoyin/data_pipeline/input
+  180  rm -r input
+  181  rm -r output
+  182  rm -r logs
+  183  ls -l
+  184  mkdir -p input output logs
+  185  ls -l
+  186  cd input
+  187  touch sales_data.csv
+  188  nano sales_data.csv
+  189  cat sales_data.csv
