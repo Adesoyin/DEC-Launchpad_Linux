@@ -74,11 +74,25 @@ See below the preprocess.sh script:
 The permission on the preprocess.sh file was seen not to be executable.
 
 Previous output:
+
     -rw-rw-r-- 1 adeboladesoyin adeboladesoyin 357 Sep 29 23:27 preprocess.sh
 
 The command below was run to give the user an executable permission:
 
+    chmod u+x preprocess.sh
+
+Output:
+
     -rwxrw-r-- 1 adeboladesoyin adeboladesoyin 357 Sep 29 23:27 preprocess.sh
 
+**Confirming the cleaned_sales_data.csv output**
+
+The commands below were run:
+
+    cd /home/adeboladesoyin/data_pipeline/output
+    ls -l
+    cat cleaned_sales_data.csv
+
+![alt text](Images/Cleaned_data_commands.png)
 
 ## Automating the Pipeline with Cron Jobs
