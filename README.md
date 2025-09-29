@@ -1,4 +1,4 @@
-# DEC-Launchpad---Linux
+# DEC-Launchpad-Linux
 
 ## Purpose
 This project is set up for a data processing pipeline using Linux commands and bash scripts. It covers:
@@ -96,3 +96,24 @@ The commands below were run:
 ![alt text](Images/Cleaned_data_commands.png)
 
 ## Automating the Pipeline with Cron Jobs
+
+In automating the pipeline, cron job was created to perform the task. The command below was run to launch the cron;
+
+    crontab -e 
+
+It opened the edit tab and the below was scheduled and run;
+
+    # Scheduling the preprocess.sh script to run daily at 12:00 AM
+
+    # For the 5 parameters to be entered in a crontab job, the first one represent minutes, 2nd -hour, 3rd -day in month, 4th - month, and 5th- day in week,
+    # I will be using '*' in the fields for others.
+
+    0 24 * * * /home/adeboladesoyin/data_peipeline/input/preprocess.sh
+
+To confirm, if the Cron job is active, the command below was run to list the scheduled jons on the server.
+
+    crontab -l
+
+And here is the output below;
+
+![alt text](Images/Cron_Job.png)
