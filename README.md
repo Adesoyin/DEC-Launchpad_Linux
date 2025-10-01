@@ -112,7 +112,7 @@ It opened the edit tab and the below was scheduled and run;
     # For the 5 parameters to be entered in a crontab job, the first one represent minutes, 2nd -hour, 3rd -day in month, 4th - month, and 5th- day in week,
     # I will be using '*' in the fields for others.
 
-    0 24 * * * /home/adeboladesoyin/data_peipeline/input/preprocess.sh
+    0 0 * * * /home/adeboladesoyin/data_peipeline/input/preprocess.sh
 
 To confirm, if the Cron job is active, the crontab - l  command was run to list the scheduled jobs on the server for my current user. The pgrep cron run would halp us know if the job craeted is active and running by returning process ID.
 
