@@ -1,4 +1,133 @@
-  ls -la
+Welcome!
+
+This server is hosted by Contabo. If you have any questions or need help,
+please don't hesitate to contact us at support@contabo.com.
+
+Last login: Wed Oct  1 22:02:19 2025 from 102.89.44.20
+adeboladesoyin@vmi2805303:~$ cd data_pipeline
+adeboladesoyin@vmi2805303:~/data_pipeline$ ls -l
+total 12
+drwxrwxr-x 2 adeboladesoyin adeboladesoyin 4096 Oct  1 22:41 input
+drwxrwxr-x 2 adeboladesoyin adeboladesoyin 4096 Oct  1 22:21 logs
+drwxrwxr-x 2 adeboladesoyin adeboladesoyin 4096 Sep 29 23:38 output
+adeboladesoyin@vmi2805303:~/data_pipeline$ cd logs
+adeboladesoyin@vmi2805303:~/data_pipeline/logs$ ls -l
+total 4
+-rw-rw-r-- 1 adeboladesoyin adeboladesoyin 69 Oct  1 22:41 preprocess.log
+adeboladesoyin@vmi2805303:~/data_pipeline/logs$ cat preprocess.log
+Dataset cleaning failed
+Successfully removed failed and cleaned data
+adeboladesoyin@vmi2805303:~/data_pipeline/logs$ cd ..
+adeboladesoyin@vmi2805303:~/data_pipeline$ cd input
+adeboladesoyin@vmi2805303:~/data_pipeline/input$ ./preprocess.sh
+Successfully removed the last column
+#!/bin/bash,,,,,
+,,,,,
+order_id,customer_name,region,order_date,amount,status
+1001,John Doe,North,2025-01-12,250,Completed
+1002,Jane Smith,South,12/02/2025,400,Pending
+1003,Mike Lee,East,2025-03-05,150,Failed
+1004,Susan Park,West,03-15-2025,600,Completed
+1005,Tom Brown,North,2025/04/01,200,Completed
+Successfully removed failed and cleaned data
+adeboladesoyin@vmi2805303:~/data_pipeline/input$ crontab -l
+#!/bin/bash
+
+# Scheduling the preprocess.sh script to run daily at 12:00 AM
+
+# For the 5 parameters to be entered in a crontab job, the first one represent minutes, 2nd -hour, 3rd -day in month, 4th - month, and 5th- day in week,
+# I will be using '*' in the fields for others.
+
+0 0 * * * /home/adeboladesoyin/data_pipeline/input/preprocess.sh >> /home/adeboladesoyin/data_pipeline/logs/preprocess.log 2>&1
+adeboladesoyin@vmi2805303:~/data_pipeline/input$ cd ..
+adeboladesoyin@vmi2805303:~/data_pipeline$ cd logs
+adeboladesoyin@vmi2805303:~/data_pipeline/logs$ ls -l preprocess.log
+-rw-rw-r-- 1 adeboladesoyin adeboladesoyin 114 Oct  1 23:10 preprocess.log
+adeboladesoyin@vmi2805303:~/data_pipeline/logs$ nano monitor.sh
+adeboladesoyin@vmi2805303:~/data_pipeline/logs$ ./monitor.sh
+22 ERROR(s)/Failure(s) found in the preprocess.log file
+adeboladesoyin@vmi2805303:~/data_pipeline/logs$ nano monitor.sh
+adeboladesoyin@vmi2805303:~/data_pipeline/logs$ ./monitor.sh
+22 ERROR(s)/Failure(s) found in the preprocess.log file
+Dataset cleaning failed
+Successfully removed failed and cleaned data
+Successfully removed failed and cleaned data
+Successfully removed failed and cleaned data
+ [Wed Oct  1 23:46:01 CEST 2025]: Successfully removed failed and cleaned data
+ [Wed Oct  1 23:46:01 CEST 2025]: Successfully removed failed and cleaned data
+1003,Mike Lee,East,2025-03-05,150,Failed
+1003,Mike Lee,East,2025-03-05,150,Failed
+1003,Mike Lee,East,2025-03-05,150,Failed
+1003,Mike Lee,East,2025-03-05,150,Failed
+1003,Mike Lee,East,2025-03-05,150,Failed
+1003,Mike Lee,East,2025-03-05,150,Failed
+1003,Mike Lee,East,2025-03-05,150,Failed
+1003,Mike Lee,East,2025-03-05,150,Failed
+1003,Mike Lee,East,2025-03-05,150,Failed
+1003,Mike Lee,East,2025-03-05,150,Failed
+1003,Mike Lee,East,2025-03-05,150,Failed
+1003,Mike Lee,East,2025-03-05,150,Failed
+1003,Mike Lee,East,2025-03-05,150,Failed
+1003,Mike Lee,East,2025-03-05,150,Failed
+1003,Mike Lee,East,2025-03-05,150,Failed
+1003,Mike Lee,East,2025-03-05,150,Failed
+adeboladesoyin@vmi2805303:~/data_pipeline/logs$ nano monitor.sh
+adeboladesoyin@vmi2805303:~/data_pipeline/logs$ ./monitor.sh
+6 ERROR(s)/Failure(s) found in the preprocess.log file
+Dataset cleaning failed
+Successfully removed failed and cleaned data
+Successfully removed failed and cleaned data
+Successfully removed failed and cleaned data
+ [Wed Oct  1 23:46:01 CEST 2025]: Successfully removed failed and cleaned data
+ [Wed Oct  1 23:46:01 CEST 2025]: Successfully removed failed and cleaned data
+crontab: installing new crontaba_pipeline/logs$ crontab -e
+adeboladesoyin@vmi2805303:~/data_pipeline/logs$
+adeboladesoyin@vmi2805303:~/data_pipeline/logs$
+adeboladesoyin@vmi2805303:~/data_pipeline/logs$ O
+O: command not found
+adeboladesoyin@vmi2805303:~/data_pipeline/logs$
+adeboladesoyin@vmi2805303:~/data_pipeline/logs$
+adeboladesoyin@vmi2805303:~/data_pipeline/logs$
+adeboladesoyin@vmi2805303:~/data_pipeline/logs$ cronttab -eX
+Display all 1711 possibilities? (y or n)
+adeboladesoyin@vmi2805303:~/data_pipeline/logs$ crontab -e
+crontab: installing new crontab
+adeboladesoyin@vmi2805303:~/data_pipeline/logs$ crontab -l
+#preprocess.sh script to run daily at 12:00 AM
+
+# For the 5 parameters to be entered in a crontab job, the first one represent minutes, 2nd -hour, 3rd -day in month, 4th - month, and 5th- day in week,
+# I will be using '*' in the fields for others.
+
+0 0 * * * /home/adeboladesoyin/data_pipeline/input/preprocess.sh >> /home/adeboladesoyin/data_pipeline/logs/preprocess.log 2>&1
+
+#monitor.sh script to run 12:05 AM daily after the preprocess.sh job
+
+5 0 * * * /home/adeboladesoyin/data_pipeline/logs/monitor.sh
+adeboladesoyin@vmi2805303:~/data_pipeline/logs$ cd ..
+adeboladesoyin@vmi2805303:~/data_pipeline$ ls -la
+total 20
+drwxrwxr-x 5 adeboladesoyin adeboladesoyin 4096 Sep 29 16:56 .
+drwx------ 8 adeboladesoyin adeboladesoyin 4096 Oct  1 23:46 ..
+drwxrwxr-x 2 adeboladesoyin adeboladesoyin 4096 Oct  1 23:59 input
+drwxrwxr-x 2 adeboladesoyin adeboladesoyin 4096 Oct  2 01:01 logs
+drwxrwxr-x 2 adeboladesoyin adeboladesoyin 4096 Sep 29 23:38 output
+adeboladesoyin@vmi2805303:~/data_pipeline$ chmod go-w input
+adeboladesoyin@vmi2805303:~/data_pipeline$ ls -la
+total 20
+drwxrwxr-x 5 adeboladesoyin adeboladesoyin 4096 Sep 29 16:56 .
+drwx------ 8 adeboladesoyin adeboladesoyin 4096 Oct  1 23:46 ..
+drwxr-xr-x 2 adeboladesoyin adeboladesoyin 4096 Oct  1 23:59 input
+drwxrwxr-x 2 adeboladesoyin adeboladesoyin 4096 Oct  2 01:01 logs
+drwxrwxr-x 2 adeboladesoyin adeboladesoyin 4096 Sep 29 23:38 output
+adeboladesoyin@vmi2805303:~/data_pipeline$ chmod go-r logs
+adeboladesoyin@vmi2805303:~/data_pipeline$ ls -la
+total 20
+drwxrwxr-x 5 adeboladesoyin adeboladesoyin 4096 Sep 29 16:56 .
+drwx------ 8 adeboladesoyin adeboladesoyin 4096 Oct  1 23:46 ..
+drwxr-xr-x 2 adeboladesoyin adeboladesoyin 4096 Oct  1 23:59 input
+drwx-wx--x 2 adeboladesoyin adeboladesoyin 4096 Oct  2 01:01 logs
+drwxrwxr-x 2 adeboladesoyin adeboladesoyin 4096 Sep 29 23:38 output
+159  ls -la
   160  mkdir data_pipeline
   161  cd data_pipeline
   162  ls -la
@@ -11,21 +140,178 @@
   169  ls -l
   170  mkdir input output logs
   171  ls -l
-  172  cd input
-  173  cd data_pipeline
-  174  cd/data_pipeline/input
-  175  ls -l
-  176  cd /data_pipeline/input
-  177  ~/data_pipeline/input/
-  178  pwd
-  179  /home/adeboladesoyin/data_pipeline/input
-  180  rm -r input
-  181  rm -r output
-  182  rm -r logs
-  183  ls -l
-  184  mkdir -p input output logs
-  185  ls -l
-  186  cd input
-  187  touch sales_data.csv
-  188  nano sales_data.csv
-  189  cat sales_data.csv
+  172  ls -la
+  173  cd input
+  174  cd data_pipeline
+  175  cd/data_pipeline/input
+  176  ls -l
+  177  cd /data_pipeline/input
+  178  ~/data_pipeline/input/
+  179  pwd
+  180  /home/adeboladesoyin/data_pipeline/input
+  181  rm -r input
+  182  rm -r output
+  183  rm -r logs
+  184  ls -l
+  185  mkdir -p input output logs
+  186  ls -l
+  187  cd input
+  188  touch sales_data.csv
+  189  nano sales_data.csv
+  190  cat sales_data.csv
+  191  history
+  192  pwd
+  193  ls -l
+  194  cd data_pipeline
+  195  ls -l
+  196  cd data_pipeline/input
+  197  pwd
+  198  /home/adeboladesoyin/data_pipeline/input
+  199  /home/adeboladesoyin/data_pipeline
+  200  cd /home/adeboladesoyin/data_pipeline
+  201  cd /home/adeboladesoyin/data_pipeline/input
+  202  ls -l
+  203  cat sales_data.csv
+  204  nano preprocess.sh
+  205  cd ../data_pipeline/input
+  206  cd /data_pipeline/input
+  207  pwd
+  208  /home/adeboladesoyin/data_pipeline
+  209  cd /home/adeboladesoyin/data_pipeline
+  210  cd /home/adeboladesoyin/data_pipeline/input
+  211  cat sales_data.csv
+  212  nano preprocess.sh
+  213  cat preprocess.sh
+  214  ls -l
+  215  chmod + u x preprocess.sh
+  216  chmod u+x preprocess.sh
+  217  ls -l
+  218  nano preprocess.sh
+  219  ./preprocess.sh
+  220  nano preprocess.sh
+  221  ./preprocess.sh
+  222  nano preprocess.sh
+  223  ./preprocess.sh
+  224  nano preprocess.sh
+  225  ./preprocess.sh
+  226  nano preprocess.sh
+  227  ./preprocess.sh
+  228  cd /home/adeboladesoyin/data_pipeline/output
+  229  ls -l
+  230  cat cleaned_sales_data.csv
+  231  cd /home/adeboladesoyin/data_pipeline/input
+  232  nano preprocess.sh
+  233  cat sales_data.csv
+  234  nano sales_data.csv
+  235  ./preprocess.sh
+  236  nano preprocess.sh
+  237  ./preprocess.sh
+  238  nano preprocess.sh
+  239  ./preprocess.sh
+  240  nano preprocess.sh
+  241  .preprocess.sh
+  242  ./preprocess.sh
+  243  nano preprocess.sh
+  244  ./preprocess.sh
+  245  nano preprocess.sh
+  246  cd /home/adeboladesoyin/data_pipeline/output
+  247  ls -l
+  248  cat cleaned_sales_data.csv
+  249  cd /home/adeboladesoyin/data_pipeline/input
+  250  crontab -e
+  251  grep preprocess.sh /var/log/syslog
+  252  grep CRON /var/log/syslog
+  253  ls -l
+  254  crontab -l
+  255  cd data_pipeline
+  256  cd input
+  257  ls -l
+  258  preprocess.sh
+  259  crontab -e
+  260  ls -l
+  261  cd data_pipeline
+  262  cd logs
+  263  cd ..
+  264  cd output
+  265  ls -l
+  266  cd ..
+  267  cd logs
+  268  ls -l
+  269  crontab -l
+  270  crontab -e
+  271  cd ..
+  272  ls -l
+  273  cd logs
+  274  ls -l
+  275  crontab -l
+  276  crontab -e
+  277  crontab -l
+  278  pgrep cron
+  279  ls -l
+  280  cd ..
+  281  cd input
+  282  ./preprocess.sh
+  283  cd logs
+  284  cd ..
+  285  cd logs
+  286  ls -l
+  287  touch preprocess.log
+  288  ls -l
+  289  cd ..
+  290  cd input
+  291  nano preprocess.sh
+  292  ./preprocess.sh
+  293  ls -l
+  294  nano preprocess.sh
+  295  ./preprocess.sh
+  296  nano preprocess.sh
+  297  ./preprocess.sh
+  298  grep CRON/var/log/syslog
+  299  ls -l
+  300  cd data_pipeline
+  301  ls -l
+  302  cd input
+  303  ls -l
+  304  pgrep cron
+  305  nano preprocess.sh
+  306  cd pipeline
+  307  cd data_pipeline
+  308  cd input
+  309*
+  310  crontab -e
+  311  cd ..
+  312  cd logs
+  313  cat preprocess.log
+  314  cd ..
+  315  cd input
+  316  crontab -e
+  317  cd ..
+  318  cd logs
+  319  nano monitor.sh
+  320  ./monitor.sh
+  321  chmod u+x monitor.sh
+  322  ./monitor.sh
+  323  nano monitor.sh
+  324  ./monitor.sh
+  325  nano monitor.sh
+  326  ./monitor.sh
+  327  nano monitor.sh
+  328  ./monitor.sh
+  329  nano monitor.sh
+  330  ./monitor.sh
+  331  nano monitor.sh
+  332  ./monitor.sh
+  333  nano monitor.sh
+  334  ./monitor.sh
+  335  nano monitor.sh
+  336  ./monitor.sh
+  337  crontab -e
+  338  O
+  339  crontab -e
+  340  crontab -l
+  341  cd ..
+  342  ls -la
+  343  chmod go-w input
+  344  ls -la
+  345  chmod go-r logs
+  346  ls -la
