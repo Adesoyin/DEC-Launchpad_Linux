@@ -8,19 +8,19 @@ This project is set up for a data processing pipeline using Linux commands and b
 4. Scheduling with cron, & logging.
 
 ## Setting up the environment
-The server was connected to using ssh in a git bash terminal
+
+The server was accessed via SSH using a Git Bash terminal:
 
     ssh adeboladesoyin@***.**.**.**
 
-Created 3 different sub-directories inside data_pipeline directory for organizing the pipeline
+Inside the data_pipeline directory, three subdirectories were created to organize the pipeline.
 
     mkdir data_pipeline
     cd data_pipeline
     mkdir -p input output logs
     ls -l
 
-The input directory would store the data.
-The output will store the processed data, and the logs will save the history.
+The input directory is used to store the raw data, the output directory holds the processed data, and the logs directory keeps the execution history.
 
 ## Data Ingestion and Pre-processing
 
@@ -35,15 +35,19 @@ A new file called sales_data.csv was created in the /data_pipeline/input directo
 
 ![alt text](Images/Dataimport.png)
 
-A preprocess.sh script was written to clean and prepare the dataset using shebang.
+A preprocess.sh script was created to clean and prepare the dataset, starting with the shebang line.
 
-1. The extra_col (the last column which is the 7th column) was removed.
-2. The rows where status (column 6) is equal to Failed was filtered out.
-3. The final changes made gave a cleaned_sales_data and output as acsv file to the output folder.
-4. A success message was echo out after successful cleaning of the dataset.
-5. Finally, the output and error was written into a log file called preprocess.log in /data_pipeline/log directory
+1. The extra_col (the 7th and last column) was removed.
 
-See below the preprocess.sh script:
+2. Rows where the status (6th column) equals Failed were filtered out.
+
+3. The cleaned dataset was saved as cleaned_sales_data.csv in the output folder.
+
+4. A success message was echoed after the dataset was successfully cleaned.
+
+5. Both the output and any errors were logged into a file named preprocess.log inside the /data_pipeline/logs directory.
+
+Below is the preprocess.sh script:
 
     #!/bin/bash
 
@@ -101,7 +105,7 @@ The commands below were run:
 
 ## Automating the Pipeline with Cron Jobs
 
-In automating the pipeline, cron job was created to perform the task. The command below was run to launch the cron;
+In automating the pipeline, a cron job was created to perform the task. The command below was used to launch cron:
 
     crontab -e 
 
@@ -114,7 +118,7 @@ It opened the edit tab and the below was scheduled and run;
 
     0 0 * * * /home/adeboladesoyin/data_peipeline/input/preprocess.sh
 
-To confirm, if the Cron job is active, the crontab - l  command was run to list the scheduled jobs on the server for my current user. The pgrep cron run would halp us know if the job craeted is active and running by returning process ID.
+To confirm if the cron job is active, the crontab -l command is used to list the scheduled jobs for the current user on the server. Running pgrep cron helps verify whether the created job is active and running, as it returns the process ID.
 
     crontab -l
     pgrep cron
@@ -130,14 +134,14 @@ The content in the preprocess.log file
 
 ## Logging and Monitoring
 
-It is important to log every output of the job process runs and the errors during run which would aid in monitoring when a process has failed and to optimize performance.
+It is important to log both the outputs of job runs and any errors that occur, as this helps in monitoring process failures and optimizing performance.
 
-Hence, to monitor the pipeline’s progress. A monitor.sh script was created to check for errors in the preprocess.log file and notify me if any are found.
+To track the pipeline’s progress, a monitor.sh script was created to scan the preprocess.log file for errors and provide a notification whenever any are detected.
 
     touch monitor.sh
     nano monitor.sh
 
-The monitor.sh script searches for any word such as "ERROR" or "failed" using grep command in the log file. If errors are found, it prints it out using echo command.
+The monitor.sh script uses the grep command to search the log file for keywords such as "ERROR" or "failed". If any matches are found, it prints them to the output using the echo command.
 
     #!/bin/bash
 
@@ -162,7 +166,7 @@ The monitor.sh script searches for any word such as "ERROR" or "failed" using gr
 
 **Monitoring script Scheduling**
 
-The monitor.sh script was automated to run by scheduling it to a cron job to run after each daily job processing at exactly 12:05 AM. Crontab -e was run again and the schedule was added as below;
+The monitor.sh script was automated by scheduling it as a cron job to run after each daily job processing, at exactly 12:05 AM. The crontab -e command was used again to edit the cron table, and the schedule was added as shown below:
 
     #preprocess.sh script to run daily at 12:00 AM
 
@@ -179,7 +183,7 @@ crontab -l was used to list all the cron jobs in the system.
 
 ## Permission & Security
 
-Finally, security is paramount as a data engineer to ensure only the required people have the access to the various directories and files. 
+Finally, security is a key responsibility for a data engineer, ensuring that access to the various directories and files is restricted only to the authorized individuals who require it.
 
 **Input folder security**
 
@@ -204,11 +208,11 @@ Read Access to log was restricted for both group and others while the user alone
 
 ## Conclusion
 
-This project has helped us work and practice on data processing pipeline using Linux commands and bash scripts.
+This project provided hands-on practice with building a data processing pipeline using Linux commands and Bash scripts.
 
-It has helped me to gain deeper understanding on file ingestion, file manipulation, automation of data processings, job orchestration (scheduling with cron) and permission managements to different users, groups or others using chmod symbolic method. 
+It enhanced my understanding of file ingestion, file manipulation, automation of data processing, job orchestration through scheduling with cron, and managing permissions for users, groups, and others using the symbolic chmod method.
 
 
-Thanks for reading through.
+Thank you for reading through.
 
 
