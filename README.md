@@ -156,6 +156,7 @@ The monitor.sh script uses the grep command to search the log file for keywords 
 
     if [ "$wordcount" -gt 0 ]; then
             echo "$wordcount ERROR(s)/Failure(s) found in the preprocess.log file"
+            echo "$Errorsearch"
     else
             echo "No error or failure found"
     fi
@@ -179,7 +180,7 @@ The monitor.sh script was automated by scheduling it as a cron job to run after 
 
     5 0 * * * /home/adeboladesoyin/data_pipeline/logs/monitor.sh
 
-crontab -l was used to list all the cron jobs in the system.
+crontab -l was used to list all the cron jobs in the system. 2>&1 ensures all error log and successful activities are appended to the log file.
 
 ## Permission & Security
 
