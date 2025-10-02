@@ -195,7 +195,7 @@ The below command was run to ensure only the user can be able to write to the di
 
      chmod go-w input
 
-    ![alt text](Images/Inputdirect_After.png)
+![alt text](Images/Inputdirect_After.png)
 
 **Log folder security**
 
@@ -211,6 +211,9 @@ Read Access to log was restricted for both group and others while the user alone
 This project provided hands-on practice with building a data processing pipeline using Linux commands and Bash scripts.
 
 It enhanced my understanding of file ingestion, file manipulation, automation of data processing, job orchestration through scheduling with cron, and managing permissions for users, groups, and others using the symbolic chmod method.
+
+
+
 
 
 Thank you for reading through.
