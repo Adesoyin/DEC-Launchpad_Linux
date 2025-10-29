@@ -8,8 +8,9 @@ LOG_FILE=$LOG_DIR/preprocess.log
 SUMMARY_FILE=$LOG_DIR/monitor_summary.log
 DATE=$(date '+%Y-%m-%d %H:%M:%S') 
 
-mkdir -p $MAIN_DIR $LOG_DIR
+mkdir -p $MAIN_DIR $LOG_DIR $SUMMARY_FILE
 
+echo "" | tee -a $SUMMARY_FILE
 echo "==================================" | tee -a $SUMMARY_FILE
 echo "$DATE: script monitoring started..." | tee -a $SUMMARY_FILE
 
@@ -20,13 +21,13 @@ MAX_LOG=$(awk -v RS='' 'END{print}' $LOG_FILE)
 Errorsearch=$(grep -Ei 'ERROR|failed' "$MAX_LOG")
 
 #Echoing/returning the lines returned with error or failed
-wordcount=$(echo "$Errorsearch" | wc -l)
+wordcount=$("$Errorsearch" | wc -l)
 
 if [ "$wordcount" -gt 0 ]; then 
     echo "$DATE: checking errors in log file..." | tee -a $SUMMARY_FILE
     echo "$DATE: $wordcount ERROR(s)/Failure(s) found in the preprocess.log file" | tee -a $SUMMARY_FILE
     echo "check details below..." | tee -a $SUMMARY_FILE
-    echo "$Errorsearch" | tee -a $SUMMARY_FILE
+    #echo "$Errorsearch" | tee -a $SUMMARY_FILE
 else
     echo "$DATE: No error or failure found" | tee -a $SUMMARY_FILE
 echo "==================================" | tee -a $SUMMARY_FILE

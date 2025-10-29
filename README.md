@@ -13,29 +13,34 @@ The server was accessed via SSH using a Git Bash terminal:
 
     ssh adeboladesoyin@***.**.**.**
 
-Inside the data_pipeline directory, three subdirectories were created to organize the pipeline.
+## Directory Struture
 
-    mkdir data_pipeline
-    cd data_pipeline
-    mkdir -p input output logs
-    ls -l
+├── input
+
+  └── sales_data.csv
+
+├── logs
+
+   └── preprocess.log
+
+   └── monitor_summary.log
+
+├── output
+
+   └── cleaned_sales_data.csv
+
+├── preprocess.sh
+
+├── monitor.sh
 
 The input directory is used to store the raw data, the output directory holds the processed data, and the logs directory keeps the execution history.
 
 ## Data Ingestion and Pre-processing
 
 Data source: This is a csv file provided by the mentor for this project.\
-link: https://github.com/dataengineering-community/launchpad/blob/main/Linux/sales_data.csv
+link: [sales_data.csv](https://raw.githubusercontent.com/dataengineering-community/launchpad/refs/heads/main/Linux/sales_data.csv)
 
-A new file called sales_data.csv was created in the /data_pipeline/input directory.
-
-    cd input
-    touch sales_data.csv
-    nano sales_data.csv
-
-![alt text](Images/Dataimport.png)
-
-A preprocess.sh script was created to clean and prepare the dataset, starting with the shebang line.
+A preprocess.sh script was created to ingest, clean and prepare the dataset. The directories and file creation were automated including the data ingestion to input directory.
 
 1. The extra_col (the 7th and last column) was removed.
 
@@ -47,7 +52,7 @@ A preprocess.sh script was created to clean and prepare the dataset, starting wi
 
 5. Both the output and any errors were logged into a file named preprocess.log inside the /data_pipeline/logs directory.
 
-Check the preprocess.sh script: ![alt text](preprocess.sh)
+Check the preprocess.sh script: [preprocess.sh](preprocess.sh)
 
 **Ensuring the script is executable**
 
@@ -67,7 +72,7 @@ Output:
 
 **Confirming the cleaned_sales_data.csv output**
 
-The commands below were run:
+The commands below were run to confirm the cleaned dataset, you can also check [cleaned_data.csv](data_pipeline/output/cleaned_sales_data.csv):
 
     cd /home/adeboladesoyin/data_pipeline/output
     ls -l
@@ -115,7 +120,7 @@ To track the pipeline’s progress, a monitor.sh script was created to scan the 
 
 The monitor.sh script uses the grep command to search the log file for keywords such as "ERROR" or "failed". If any matches are found, it prints them to the output using the echo command.
 
-Check the ![alt text](monitor.sh) to view the scripts
+Check the [monitor.sh](monitor.sh) to view the scripts
 
 **_Output after run**_
 
