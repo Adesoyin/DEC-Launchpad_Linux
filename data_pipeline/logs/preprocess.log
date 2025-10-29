@@ -1,0 +1,13 @@
+==================================
+Directories created if not exist
+ 2025-10-26 22:11:12: Data Ingestion starting...
+ 2025-10-26 22:11:12: Downloading sales data from https://raw.githubusercontent.com/kabirmohdo/launchpad/main/Linux/sales_data.csv
+ ERROR: 2025-10-26 22:11:12: Failed to download sales data from https://raw.githubusercontent.com/kabirmohdo/launchpad/main/Linux/sales_data.csv
+ 2025-10-26 22:11:12: Hence, data preprocessing cannot be started.
+==================================
+Directories created if not exist
+ 2025-10-29 15:02:13: Data Ingestion starting...
+ 2025-10-29 15:02:13: Downloading sales data from https://raw.githubusercontent.com/kabirmohdo/launchpad/main/Linux/sales_data.csv
+ ERROR: 2025-10-29 15:02:13: Failed to download sales data from https://raw.githubusercontent.com/kabirmohdo/launchpad/main/Linux/sales_data.csv
+ 2025-10-29 15:02:13: Hence, data preprocessing cannot be started.
+==================================

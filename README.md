@@ -47,35 +47,7 @@ A preprocess.sh script was created to clean and prepare the dataset, starting wi
 
 5. Both the output and any errors were logged into a file named preprocess.log inside the /data_pipeline/logs directory.
 
-Below is the preprocess.sh script:
-
-    #!/bin/bash
-
-    inputfile=home/adeboladesoyin/data_pipeline/input/sales_data.csv
-    removefile=removecolumn.csv
-    outputfile=/home/adeboladesoyin/data_pipeline/output/cleaned_sales_data.csv
-    logfile=/home/adeboladesoyin/data_pipeline/logs/preprocess.log
-
-    #Removing the last column from the sales_data.csv
-    awk -F, '{print $1,$2,$3,$4,$5,$6}' OFS="," "$inputfile" > "$removefile"
-
-    if [ $? -eq 0 ]; then
-            echo "Successfully removed the last column" & cat "$removefile"
-    else
-            echo "Last column not successfully removed"
-    fi
-
-
-    #Filtering failed status from the data
-    awk -F, '$6 != "Failed" {print $1, $2,$3.$4,$5,$6}' OFS ="," "$removefile" > "$outputfile"
-
-    #Checking if the command is successful and also log the output and error
-    if [ $? -eq 0 ]; then
-            echo "Successfully removed failed and cleaned data" | tee -a "$logfile"
-    else
-            echo "Dataset cleaning failed" | tee -a "$logfile"
-    fi
-
+Check the preprocess.sh script: ![alt text](preprocess.sh)
 
 **Ensuring the script is executable**
 
@@ -143,23 +115,7 @@ To track the pipeline’s progress, a monitor.sh script was created to scan the 
 
 The monitor.sh script uses the grep command to search the log file for keywords such as "ERROR" or "failed". If any matches are found, it prints them to the output using the echo command.
 
-    #!/bin/bash
-
-    #Searching for the instances of ERROR or failed word in log file
-
-    logfile=/home/adeboladesoyin/data_pipeline/logs/preprocess.log
-
-    Errorsearch=$(grep -Ei 'ERROR|failed' "$logfile")
-
-    #Echoing/returning the lines returned with error or failed
-    wordcount=$(echo "$Errorsearch" | wc -l)
-
-    if [ "$wordcount" -gt 0 ]; then
-            echo "$wordcount ERROR(s)/Failure(s) found in the preprocess.log file"
-            echo "$Errorsearch"
-    else
-            echo "No error or failure found"
-    fi
+Check the ![alt text](monitor.sh) to view the scripts
 
 **_Output after run**_
 
