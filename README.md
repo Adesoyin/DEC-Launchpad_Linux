@@ -116,11 +116,7 @@ To track the pipeline’s progress, a monitor.sh script was created to scan the 
 
 The monitor.sh script uses the grep command to search the log file for keywords such as "ERROR" or "failed". If any matches are found, it prints them to the output using the echo command.
 
-Check the [monitor.sh](monitor.sh) to view the scripts and [monitor_summary.log](data_pipeline/logs/monitor_summary.log)
-
-**_Output after run**_
-
-![alt text](Images/Error%20monitoring.png)
+Check the [monitor.sh](monitor.sh) to view the scripts and [monitor_summary.log](data_pipeline/logs/monitor_summary.log) to view the output.
 
 **Monitoring script Scheduling**
 
