@@ -17,17 +17,17 @@ The server was accessed via SSH using a Git Bash terminal:
 
 ├── input
 
-  └── sales_data.csv
+    └── sales_data.csv
 
 ├── logs
 
-   └── preprocess.log
+    └── preprocess.log
 
-   └── monitor_summary.log
+    └── monitor_summary.log
 
 ├── output
 
-   └── cleaned_sales_data.csv
+    └── cleaned_sales_data.csv
 
 ├── preprocess.sh
 
@@ -78,8 +78,6 @@ The commands below were run to confirm the cleaned dataset, you can also check [
     ls -l
     cat cleaned_sales_data.csv
 
-![alt text](Images/Cleaned_data_commands.png)
-
 ## Automating the Pipeline with Cron Jobs
 
 In automating the pipeline, a cron job was created to perform the task. The command below was used to launch cron:
@@ -105,9 +103,7 @@ And here is the output below;
 ![alt text](Images/Cron_Job.png)
 ![alt text](Images/CronJoB%20ID.png)
 
-The content in the preprocess.log file
-
-![alt text](Images/logfile.png)
+Check [preprocess.log](data_pipeline/logs/logs/preprocess.log) file
 
 ## Logging and Monitoring
 
@@ -120,7 +116,7 @@ To track the pipeline’s progress, a monitor.sh script was created to scan the 
 
 The monitor.sh script uses the grep command to search the log file for keywords such as "ERROR" or "failed". If any matches are found, it prints them to the output using the echo command.
 
-Check the [monitor.sh](monitor.sh) to view the scripts
+Check the [monitor.sh](monitor.sh) to view the scripts and [monitor.sh](monitor.sh)
 
 **_Output after run**_
 
